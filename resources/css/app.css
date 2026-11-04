@@ -1,9 +1,138 @@
-@import 'tailwindcss';
+/* Colores y letra de la plantilla original. */
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf8ff; color: #171b26; font-family: 'Outfit', sans-serif; font-size: 15px; }
+a { color: #655d55; text-decoration: none; }
+h1, h2, p { margin-top: 0; }
+h1 { font-size: 28px; margin-bottom: 8px; }
+h2 { font-size: 21px; margin-bottom: 10px; }
+p { line-height: 1.6; }
+button, input, select { font: inherit; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #7e766e; outline-offset: 3px; }
+.texto-suave, small { color: #67625d; }
+.etiqueta { color: #655d55; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 10px; }
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+/* Menú lateral y barra de la cuenta. */
+.menu { position: fixed; top: 0; left: 0; bottom: 0; width: 260px; background: white; padding: 24px 18px; border-right: 1px solid #e8e1dc; z-index: 20; overflow-y: auto; }
+.marca { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 2px; padding: 0 6px 24px; margin-bottom: 28px; border-bottom: 1px solid #e8e1dc; }
+.marca-icono { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 6px; background: #e8dcd2; color: #655d55; }
+.menu nav a { display: flex; align-items: center; gap: 12px; padding: 14px 12px; margin-bottom: 7px; border-radius: 5px; color: #4c463f; }
+.menu nav a:hover, .menu nav a.activo { background: #eaedfd; }
+.menu nav a.activo { font-weight: 700; border-left: 3px solid #655d55; }
+.menu-pie { margin-top: 45px; font-size: 12px; color: #67625d; }
+.barra { margin-left: 260px; min-height: 80px; background: #eaedfd; border-bottom: 1px solid #dfdce5; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 32px; }
+.cuenta { display: flex; flex-direction: column; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.cuenta strong { color: #655d55; }
+.cuenta span { font-size: 13px; color: #4c463f; }
+.abrir-menu { display: none !important; }
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* Espacios del contenido y formularios centrados. */
+.sistema .principal { margin-left: 260px; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 36px; border-bottom: 1px solid #e5e2e8; background: #f2f3ff; }
+.cabecera h1 { margin: 0; }
+.contenido { padding: 32px 36px; max-width: 1500px; margin: 0 auto; }
+.tarjeta { background: white; border: 1px solid #e4ddd7; border-radius: 8px; padding: 28px; box-shadow: 0 3px 12px #171b2608; }
+.formulario { width: 100%; max-width: 650px; margin: 0 auto; }
+.campo { margin: 22px 0; }
+.campo label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 9px; }
+.campo input, .campo select { width: 100%; min-height: 46px; padding: 11px 13px; color: #171b26; background: #f2f3ff; border: 1px solid #cfc5bc; border-radius: 7px; }
+.campo input:focus, .campo select:focus { border-color: #655d55; }
+.campo input[readonly] { background: #eeeef1; }
+.campo small { display: block; margin-top: 7px; line-height: 1.5; font-size: 12px; }
+.campo input[type=file] { padding: 9px; }
+.campo input::file-selector-button { font: inherit; background: #655d55; color: white; border: 0; padding: 6px 10px; border-radius: 4px; margin-right: 10px; cursor: pointer; }
+
+/* Los botones comparten tamaño, color y bordes. */
+.boton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 11px 17px; border: 1px solid #655d55; border-radius: 5px; background: #655d55; color: white; font-size: 13px; font-weight: 700; cursor: pointer; text-align: center; }
+.boton:hover { background: #4d453e; }
+.boton .material-symbols-outlined { font-size: 19px; }
+.boton.secundario { background: white; color: #655d55; border-color: #cfc5bc; }
+.boton.secundario:hover { background: #ece0d6; }
+.boton.peligro { background: #ba1a1a; border-color: #ba1a1a; }
+.boton.peligro:hover { background: #93000a; }
+.boton.pequeno { min-height: 34px; padding: 7px 12px; font-size: 12px; }
+.ancho { width: 100%; }
+.acciones-formulario { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 20px; margin-top: 24px; border-top: 1px solid #e8e1dc; }
+.acciones-tabla { display: flex; flex-wrap: wrap; gap: 8px; }
+.casilla { display: flex; align-items: center; gap: 12px; background: #f2f3ff; padding: 15px; border: 1px solid #dfdce5; border-radius: 6px; margin: 12px 0; cursor: pointer; }
+.casilla input { width: 18px; height: 18px; accent-color: #655d55; }
+
+/* Tablas y mensajes. */
+.listado { padding: 0; overflow: hidden; }
+.tabla-contenedor { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+caption { text-align: left; padding: 22px; font-weight: 700; }
+th { background: #f2f3ff; font-size: 12px; color: #4c463f; }
+th, td { padding: 17px 22px; border-bottom: 1px solid #e8e1dc; }
+td { font-size: 14px; overflow-wrap: anywhere; }
+tr:hover td { background: #faf8ff; }
+.vacio { text-align: center; padding: 45px 22px; color: #67625d; }
+.paginacion { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 20px 22px; font-size: 12px; color: #67625d; }
+.aviso, .errores { padding: 16px 20px; border-radius: 6px; margin-bottom: 24px; font-size: 14px; line-height: 1.6; }
+.aviso { background: #eeeee0; border: 1px solid #ccc98b; color: #4a4917; }
+.errores { background: #ffdad6; border: 1px solid #ba1a1a; color: #93000a; }
+.errores ul { margin: 6px 0 0; padding-left: 20px; }
+.error { color: #ba1a1a !important; }
+
+/* Páginas de inicio y foto del jugador. */
+.bienvenida { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+.bienvenida p { margin-bottom: 0; }
+.tarjetas { display: flex; flex-wrap: wrap; gap: 22px; }
+.enlace-tarjeta { flex: 1; min-width: 210px; color: #171b26; }
+.enlace-tarjeta > .material-symbols-outlined { color: #655d55; padding: 12px; background: #ece0d6; border-radius: 6px; margin-bottom: 20px; }
+.enlace-tarjeta p { color: #67625d; font-size: 14px; }
+.enlace-tarjeta > span:last-child { color: #655d55; font-size: 13px; font-weight: 700; }
+.enlace-tarjeta:hover { border-color: #655d55; }
+.perfil { text-align: center; }
+.foto-perfil { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 4px solid #ece0d6; margin-bottom: 22px; }
+.perfil-icono { font-size: 80px; color: #655d55; margin-bottom: 22px; }
+dl { text-align: left; margin: 24px 0 0; border-top: 1px solid #e8e1dc; }
+dt { font-size: 12px; color: #67625d; margin-top: 18px; }
+dd { margin: 5px 0 0; overflow-wrap: anywhere; }
+
+/* Inicio de sesión y autorregistro usan los mismos campos. */
+.acceso .contenido { max-width: 1100px; padding: 40px 24px; }
+.tarjeta-acceso { display: flex; min-height: 600px; background: white; border: 1px solid #e4ddd7; border-radius: 10px; overflow: hidden; margin: 35px auto; }
+.presentacion { width: 47%; background: #eaedfd; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 35px; text-align: center; }
+.presentacion img { width: 100%; max-width: 370px; margin-bottom: 30px; }
+.presentacion p { font-size: 23px; font-weight: 700; color: #655d55; }
+.presentacion span { color: #67625d; }
+.formulario-acceso { width: 53%; padding: 60px 45px 30px; }
+.separador { text-align: center; margin: 25px 0 18px; color: #67625d; font-size: 12px; }
+.pie { text-align: center; color: #67625d; font-size: 11px; margin: 30px 0 0; }
+.registro { padding: 32px; }
+
+/* En pantallas pequeñas se abre el menú con su botón. */
+@media (max-width: 900px) {
+    .menu { display: none; top: 80px; width: 260px; box-shadow: 8px 12px 20px #171b2620; }
+    .menu.abierto { display: block; }
+    .abrir-menu { display: inline-flex !important; }
+    .barra, .sistema .principal { margin-left: 0; }
+    .barra { padding: 15px 20px; }
+    .cuenta { flex: 1; }
+    .contenido { padding: 24px 20px; }
+    .cabecera { padding: 24px 20px; }
 }
+@media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .barra { gap: 10px; padding: 12px; }
+    .barra .boton { padding: 9px; font-size: 11px; }
+    .cuenta strong { font-size: 13px; }
+    .cuenta span { font-size: 11px; }
+    .cabecera { align-items: flex-start; flex-direction: column; gap: 14px; }
+    .contenido { padding: 20px 14px; }
+    .tarjeta { padding: 22px; }
+    .listado { padding: 0; }
+    .acciones-formulario .boton { width: 100%; }
+    .paginacion { flex-wrap: wrap; }
+    .tarjeta-acceso { display: block; margin: 0; min-height: auto; }
+    .presentacion { width: 100%; padding: 20px; }
+    .presentacion img { max-width: 190px; margin: 0; }
+    .presentacion p, .presentacion span { display: none; }
+    .formulario-acceso { width: 100%; padding: 30px 24px; }
+    .acceso .contenido { padding: 20px 14px; }
+    .bienvenida { align-items: flex-start; }
+}
+
+/* Las fotos de autores y obras se muestran con el mismo tamaño. */
+.foto-catalogo { display: block; width: 88px; height: 88px; object-fit: cover; border-radius: 6px; border: 1px solid #e4ddd7; }

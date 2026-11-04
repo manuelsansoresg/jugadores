@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg-canvas { fill: #e8dcd2; }
+      .dark-tone { fill: #4e3f32; }
+      .stroke-dark { stroke: #4e3f32; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .paint-fill { fill: #e8dcd2; }
+      .line-accent { stroke: #e8dcd2; stroke-width: 3.5; stroke-linecap: round; }
+      .brand-text {
+        font-family: 'Montserrat', 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-weight: 800;
+        font-size: 68px;
+        letter-spacing: 3px;
+        fill: #4e3f32;
+      }
+    </style>
+  </defs>
+<!-- BASE / BLOQUE DE IMPACTO DEL MAZO -->
+<path d="M 160 295 L 265 295 C 273 295, 280 299, 280 305 L 280 315 C 280 322, 273 326, 265 326 L 155 326 C 147 326, 140 322, 140 315 L 140 305 C 140 299, 147 295, 155 295 Z" class="dark-tone" />
+
+<!-- OLA DINÁMICA / SALPICADURA DE PINTURA INFERIOR -->
+<!-- Contorno y relleno de la onda de pintura que fluye del golpe -->
+<path d="M 125 315 C 105 325, 105 348, 128 358 C 160 370, 220 370, 280 355 C 340 340, 395 340, 425 365 C 435 373, 432 384, 420 388 C 410 391, 400 388, 392 383 C 388 380, 375 390, 360 388 C 340 385, 335 368, 305 370 C 260 373, 205 385, 150 375 C 105 367, 85 342, 98 322 C 105 310, 118 308, 125 315 Z" 
+      fill="#e8dcd2" stroke="#4e3f32" stroke-width="4.5" stroke-linejoin="round" />
+
+<!-- Trazos de fluidez internos de la pintura -->
+<path d="M 130 345 C 180 365, 270 365, 360 345" fill="none" stroke="#4e3f32" stroke-width="3" stroke-linecap="round" />
+<path d="M 370 355 C 395 360, 412 368, 418 376" fill="none" stroke="#4e3f32" stroke-width="2.5" stroke-linecap="round" />
+
+<!-- Salpicaduras / Gotas satélite a la derecha del bloque -->
+<circle cx="438" cy="346" r="6" class="dark-tone" />
+<path d="M 285 288 C 295 280, 320 258, 322 245 C 323 238, 317 236, 310 242 C 298 252, 286 270, 280 280 Z" fill="#e8dcd2" stroke="#4e3f32" stroke-width="3.5" stroke-linejoin="round" />
+<path d="M 305 292 C 315 288, 330 282, 332 274 C 334 268, 328 266, 321 270 C 310 277, 300 286, 295 292 Z" fill="#e8dcd2" stroke="#4e3f32" stroke-width="3" stroke-linejoin="round" />
+
+<!-- GRUPO MAZO-BROCHA (ÁNGULO DE IMPACTO ~43°) -->
+<g transform="rotate(44 210 230)">
+  
+  <!-- Mango cilíndrico del mazo -->
+  <rect x="180" y="2" width="22" height="150" rx="10" class="dark-tone" />
+
+  <!-- Cabeza trasera del mazo (cilindro y remate biselado) -->
+  <path d="M 160 148 L 222 148 C 228 148, 233 153, 233 160 L 233 175 C 233 182, 228 187, 222 187 L 160 187 C 154 187, 149 182, 149 175 L 149 160 C 149 153, 154 148, 160 148 Z" class="dark-tone" />
+  
+  <!-- Detalle / reflejo en la cabeza trasera -->
+  <line x1="168" y1="156" x2="168" y2="179" class="line-accent" />
+  <line x1="176" y1="156" x2="176" y2="179" class="line-accent" />
+
+  <!-- Férula intermedia de unión -->
+  <path d="M 164 187 L 218 187 L 224 200 L 158 200 Z" class="dark-tone" />
+
+  <!-- CERDAS DE LA BROCHA (cuerpo ancho con silueta de trazos de óleo) -->
+  <path d="M 158 200 
+           C 142 225, 125 240, 115 260 
+           C 130 252, 145 250, 155 258 
+           C 165 248, 178 246, 185 258 
+           C 195 248, 208 246, 218 260 
+           C 228 248, 240 252, 250 262 
+           C 255 240, 240 220, 224 200 Z" 
+        fill="#e8dcd2" stroke="#4e3f32" stroke-width="4.5" stroke-linejoin="round" />
+
+  <!-- Líneas de textura y filamentos de la brocha -->
+  <path d="M 155 208 C 150 220, 142 235, 135 245" fill="none" stroke="#4e3f32" stroke-width="3" stroke-linecap="round" />
+  <path d="M 172 208 C 170 222, 168 235, 165 245" fill="none" stroke="#4e3f32" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 191 208 C 191 222, 192 235, 195 245" fill="none" stroke="#4e3f32" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 210 208 C 215 220, 225 235, 232 245" fill="none" stroke="#4e3f32" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Gota que cuelga de la punta de la brocha hacia la base -->
+  <path d="M 155 258 C 152 272, 146 280, 144 286 C 146 288, 150 286, 154 278 C 158 270, 159 262, 158 258 Z" fill="#e8dcd2" stroke="#4e3f32" stroke-width="2.5" />
+</g>
+</svg>
